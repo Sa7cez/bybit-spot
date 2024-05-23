@@ -103,7 +103,9 @@ class BybitSeller {
       const { lastPrice } = await this.getTicker()
       this.l(`current SPOT price of ${c.cyan(pair)}:`, lastPrice)
 
-      if (+unifiedTokenBalance > 0 || +unifiedUSDTBalance > 0) await this.createOrder()
+      if (+unifiedTokenBalance > 0 || +unifiedUSDTBalance > 0) {
+        if (await this.createOrder()) break
+      }
 
       await sleep(timeout)
     }
@@ -128,6 +130,12 @@ class BybitSeller {
 
       if (fromCoin === 'USDT') toAmount = (+fromAmount / +price).toFixed(2)
       else toAmount = (+fromAmount * +price).toFixed(2)
+
+      if (+toAmount < 0.01) {
+        this.l(c.magenta(`all funds sold!`))
+        completed = true
+        break
+      }
 
       this.l(
         `create ${orderSide === 'Buy' ? c.green('BUY') : c.red('SELL')} order:`,
@@ -161,7 +169,7 @@ class BybitSeller {
       fromAmount = await this.getCoinBalance(fromCoin, 'UNIFIED')
     }
 
-    await this.getBalances()
+    return this.getBalances()
   }
 }
 
