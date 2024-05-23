@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "preserveSymlinks": true,
+    "strictPropertyInitialization": false,
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "outDir": "./build",
+    "resolveJsonModule": true,
+    "emitDecoratorMetadata": false,
+    "experimentalDecorators": true,
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true
+  }
+}

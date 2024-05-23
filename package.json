@@ -1,0 +1,22 @@
+{
+  "name": "bybit-spot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx tsx index.ts",
+    "buy": "npx tsx --watch index.ts buy",
+    "sell": "npx tsx --watch index.ts sell",
+    "dev": "npx tsx --watch index.ts",
+    "build": "npx tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^20.12.12",
+    "bybit-api": "^3.10.3",
+    "chalk": "^5.3.0",
+    "tsx": "^4.10.5"
+  }
+}
