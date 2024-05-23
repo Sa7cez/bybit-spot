@@ -118,7 +118,7 @@ class BybitSeller {
     let fromAmount = await this.getCoinBalance(fromCoin, 'UNIFIED')
     let toAmount
 
-    if (fromCoin === 'USDT') fromAmount = String(Number(await this.getCoinBalance(fromCoin, 'UNIFIED')))
+    if (fromCoin === 'USDT') fromAmount = String(Number(await this.getCoinBalance(fromCoin, 'UNIFIED')) * 0.99)
 
     while (!completed) {
       if (+fromAmount > config.maxOrderAmount) fromAmount = String(config.maxOrderAmount)
